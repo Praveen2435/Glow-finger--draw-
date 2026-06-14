@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ── Base Reset ──────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+}
+
+/* ── Custom scrollbar ────────────────────────── */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,255,255,0.2) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(0,255,255,0.2);
+  border-radius: 2px;
+}
+
+/* ── Range input thumb ───────────────────────── */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0,255,255,0.6);
+  border: 2px solid rgba(0,255,255,0.5);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0,255,255,0.6);
+  border: 2px solid rgba(0,255,255,0.5);
+}
+
+/* ── Neon text glow utility ──────────────────── */
+.text-glow-cyan {
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff60;
+}
+.text-glow-purple {
+  text-shadow: 0 0 10px #bf5fff, 0 0 20px #bf5fff60;
+}
+
+/* ── Selection ───────────────────────────────── */
+::selection {
+  background: rgba(0,255,255,0.2);
+  color: #fff;
+}
+
+/* ── Cursor ──────────────────────────────────── */
+body {
+  cursor: none;
+}
+button, input, label, select {
+  cursor: pointer;
+}
+
+/* ── Prevent blue highlight on mobile tap ────── */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Glassmorphism card ──────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Ambient background gradient ────────────── */
+.ambient-bg {
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(0, 255, 255, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(191, 95, 255, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 80%, rgba(255, 45, 155, 0.02) 0%, transparent 60%),
+    #000;
+}
+
+/* ── Animated gradient border ────────────────── */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(0,255,255,0.3); }
+  50% { border-color: rgba(191,95,255,0.3); }
+}
+.border-glow-animate {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* ── Pulse ring animation ────────────────────── */
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulseRing 1.5s ease-out infinite;
+}
+
+/* ── Mobile: hide panel, show bottom bar ────── */
+@media (max-width: 640px) {
+  .controls-panel {
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    max-height: 50vh;
+    border-radius: 20px 20px 0 0;
+    border-left: none !important;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+}
